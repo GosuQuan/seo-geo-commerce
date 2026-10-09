@@ -23,3 +23,72 @@ body {
 summary::-webkit-details-marker {
   display: none;
 }
+
+/* Effects lab — Tailwind-friendly micro keyframes (no extra deps) */
+@keyframes fx-float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+@keyframes fx-shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+@keyframes fx-wiggle {
+  0%,
+  100% {
+    transform: rotate(-2deg);
+  }
+  50% {
+    transform: rotate(2deg);
+  }
+}
+
+@keyframes fx-pulse-ring {
+  0% {
+    box-shadow: 0 0 0 0 rgb(13 148 136 / 0.55);
+  }
+  70% {
+    box-shadow: 0 0 0 14px rgb(13 148 136 / 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgb(13 148 136 / 0);
+  }
+}
+
+.fx-float {
+  animation: fx-float 3s ease-in-out infinite;
+}
+
+.fx-shimmer::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    110deg,
+    transparent 25%,
+    rgb(255 255 255 / 0.55) 50%,
+    transparent 75%
+  );
+  background-size: 200% 100%;
+  animation: fx-shimmer 2.2s linear infinite;
+  pointer-events: none;
+}
+
+.fx-wiggle {
+  animation: fx-wiggle 1.2s ease-in-out infinite;
+}
+
+.fx-pulse-ring {
+  animation: fx-pulse-ring 1.8s ease-out infinite;
+}

@@ -3,6 +3,7 @@ import { siteConfig } from "@/config/site";
 import { products } from "@/data/products";
 import { categories } from "@/data/categories";
 import { guides } from "@/data/guides";
+import { effectDemos } from "@/components/effects/catalog";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const base = siteConfig.url;
@@ -13,6 +14,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${base}/products`, lastModified: now, changeFrequency: "daily", priority: 0.9 },
     { url: `${base}/about`, lastModified: now, changeFrequency: "monthly", priority: 0.6 },
     { url: `${base}/audit`, lastModified: now, changeFrequency: "monthly", priority: 0.4 },
+    { url: `${base}/effects`, lastModified: now, changeFrequency: "monthly", priority: 0.5 },
   ];
 
   const productRoutes = products.map((p) => ({
@@ -36,5 +38,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.7,
   }));
 
-  return [...staticRoutes, ...productRoutes, ...categoryRoutes, ...guideRoutes];
+  const effectRoutes = effectDemos.map((d) => ({
+    url: `${base}/effects/${d.slug}`,
+    lastModified: now,
+    changeFrequency: "monthly" as const,
+    priority: 0.4,
+  }));
+
+  return [...staticRoutes, ...productRoutes, ...categoryRoutes, ...guideRoutes, ...effectRoutes];
 }

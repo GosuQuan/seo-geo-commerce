@@ -31,6 +31,12 @@ export function Header() {
           <Link className="hover:text-violet-800" href="/guides/shopify-seo-geo">
             Shopify 实践
           </Link>
+          <Link
+            className="rounded-full bg-gradient-to-r from-fuchsia-500 to-cyan-500 px-2.5 py-0.5 font-medium text-white shadow-sm hover:opacity-90"
+            href="/effects"
+          >
+            动效实验室
+          </Link>
           <Link className="hover:text-emerald-800" href="/audit">
             GEO 审计
           </Link>

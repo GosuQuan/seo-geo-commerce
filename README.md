@@ -14,11 +14,13 @@
   <img src="https://img.shields.io/badge/GEO-Answer--first-10b981?style=for-the-badge&logo=openai&logoColor=white" alt="GEO" />
   <img src="https://img.shields.io/badge/Shopify-playbook-96bf48?style=for-the-badge&logo=shopify&logoColor=white" alt="Shopify" />
   <img src="https://img.shields.io/badge/TypeScript-strict-3178c6?style=for-the-badge&logo=typescript&logoColor=white" alt="TS" />
+  <img src="https://img.shields.io/badge/Effects-lab-ec4899?style=for-the-badge&logo=framer&logoColor=white" alt="Effects" />
 </p>
 
 <p align="center">
   <a href="#-快速开始">快速开始</a> ·
   <a href="#-功能矩阵">功能</a> ·
+  <a href="#-动效实验室">动效实验室</a> ·
   <a href="#-架构">架构</a> ·
   <a href="#-shopify-复用">Shopify</a> ·
   <a href="#-技术博客">博客</a> ·
@@ -73,6 +75,7 @@ docker compose up --build        # 近生产一键起
 | 👟 旗舰 PDP | http://117.72.122.109/trailforge/products/ridgewalk-gtx-mid |
 | 🧭 Shopify 实践指南 | http://117.72.122.109/trailforge/guides/shopify-seo-geo |
 | 📊 GEO 审计 | http://117.72.122.109/trailforge/audit |
+| ✨ 动效实验室 | http://117.72.122.109/trailforge/effects |
 | 🧾 Facts API | http://117.72.122.109/trailforge/api/facts/ridgewalk-gtx-mid |
 
 > IP Demo（路径前缀 `/trailforge`）。生产请换自定义域 + HTTPS。2G 小机勿在服务器上硬编大构建。
@@ -84,6 +87,7 @@ docker compose up --build        # 近生产一键起
 ```text
 ┌──────────────┬─────────────────────────────────────────────────────┐
 │ 店面         │ /products · /categories · /guides · /about · /audit │
+│ 动效实验室   │ /effects · 8 库按路由懒加载（Motion/GSAP/Lottie/…）   │
 │ SEO          │ metadata · sitemap · robots · 丰富 JSON-LD          │
 │ GEO          │ Answer-first · FAQ · Facts API · crawler policy     │
 │ Shopify 桥   │ SeoBridgeCallout · /guides/shopify-seo-geo          │
@@ -97,6 +101,7 @@ docker compose up --build        # 近生产一键起
 - `/categories/[slug]` 分类买家指南
 - `/guides/*` 含 **Shopify SEO/GEO 实践**、新手装备、防水等级
 - `/audit` 清单打分
+- `/effects` **动效实验室**（8 个子演示，懒加载）
 
 ### SEO
 
@@ -111,6 +116,34 @@ docker compose up --build        # 近生产一键起
 - `src/config/crawlers.ts`（search vs training）
 - `GET /api/products` · `/api/facts/[slug]`
 - `/audit` + [`docs/geo-prompt-panel.md`](./docs/geo-prompt-panel.md)
+
+
+---
+
+## ✨ 动效实验室
+
+可商用开源动效 **全量进 Demo**，但 **按路由懒加载**——商店首页不会背负 Three.js。
+
+| 路由 | 库 | 许可 |
+|------|----|------|
+| [`/effects`](http://localhost:3000/effects) | Hub 彩色卡片 | — |
+| `/effects/motion` | [Motion](https://motion.dev/) | MIT |
+| `/effects/gsap` | [GSAP](https://gsap.com/) core | 核心可商用* |
+| `/effects/lottie` | [lottie-react](https://www.npmjs.com/package/lottie-react) | MIT |
+| `/effects/auto-animate` | [Auto-Animate](https://auto-animate.formkit.com/) | MIT |
+| `/effects/spring` | [React Spring](https://www.react-spring.dev/) | MIT |
+| `/effects/animate-css` | [Animate.css](https://animate.style/) | MIT（仅该页引入 CSS） |
+| `/effects/tailwind` | Tailwind `@keyframes` | MIT |
+| `/effects/r3f` | Three.js + R3F + drei | MIT |
+
+\* GSAP 部分 Club 插件需付费授权；本仓库 Demo **只依赖 `gsap` 核心**。详见 [docs/blog/animation-libs.md](./docs/blog/animation-libs.md)。
+
+```bash
+npm run dev
+# 打开 http://localhost:3000/effects
+```
+
+实现要点：`src/components/effects/Lazy*.tsx` → `next/dynamic(..., { ssr: false })`。
 
 ---
 
@@ -141,7 +174,7 @@ flowchart LR
 ```text
 src/
   app/          # App Router 页面与 API
-  components/   # AnswerFirst · SpecsTable · FaqList · SeoBridgeCallout
+  components/   # AnswerFirst · SpecsTable · FaqList · SeoBridgeCallout · effects/*
   config/       # site.ts · crawlers.ts
   data/         # 商品/分类/指南 + Zod
   lib/seo|geo/  # metadata · jsonld · audit · facts
@@ -209,6 +242,7 @@ docs/
 - Next.js 15 App Router · Chinese demo catalog · Zod single source of truth  
 - JSON-LD · robots policy · `/api/facts` · GEO audit UI  
 - **Shopify playbook** with copy-paste Liquid snippets  
+- **Effects Lab** (`/effects`) — Motion, GSAP, Lottie, Auto-Animate, Spring, Animate.css, Tailwind, R3F (route-lazy)  
 - Docker Compose · colorful docs for GitHub showcase  
 
 ```bash

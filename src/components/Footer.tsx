@@ -32,6 +32,11 @@ export function Footer() {
                 /robots.txt
               </Link>
             </li>
+            <li>
+              <Link className="hover:text-fuchsia-800" href="/effects">
+                /effects 动效实验室
+              </Link>
+            </li>
           </ul>
         </div>
         <div>
