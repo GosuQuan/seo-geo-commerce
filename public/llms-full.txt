@@ -1,0 +1,17 @@
+# TrailForge 峰途 — full catalog summary for agents
+
+IMPORTANT: Google ignores llms.txt / llms-full.txt. Prefer on-page SSR content, JSON-LD, and /api/facts for citations.
+
+## Products
+1. ridgewalk-gtx-mid — 峰途 RidgeWalk GTX 中帮徒步鞋 — ¥1299 — GORE-TEX, Vibram, ~480g
+2. cloudtrail-mesh-low — 峰途 CloudTrail 透气低帮 — ¥599 — mesh, DWR, ~320g
+3. alpine-grip-high — 峰途 AlpineGrip 高帮登山鞋 — ¥1699 — waterproof membrane, ~560g
+4. summit-shell-3in1 — 峰途 Summit 三合一冲锋衣 — ¥1499 — 20K/15K, ~980g kit
+5. windveil-softshell — 峰途 WindVeil 软壳外套 — ¥799 — softshell, ~420g
+6. daypack-28 — 峰途 DayLite 28L 日包 — ¥459 — 28L, ~780g
+7. expedition-55 — 峰途 Expedition 55L 登山包 — ¥1099 — 55L, ~1.6kg
+8. headlamp-300 — 峰途 Beam 300 头灯 — ¥199 — 300lm, IPX6, 86g
+9. poles-carbon-z — 峰途 Carbon-Z 折叠登山杖 — ¥399/pair — carbon, 105–125cm
+10. trail-socks-merino — 峰途 Merino 徒步袜双装 — ¥129 — merino blend
+
+For each product, fetch /api/facts/{slug} for specs, FAQs, and ratings aligned with on-page content.

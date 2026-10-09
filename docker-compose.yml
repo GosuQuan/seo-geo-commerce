@@ -1,0 +1,14 @@
+services:
+  web:
+    build:
+      context: .
+      args:
+        SITE_URL: ${SITE_URL:-http://localhost:3000}
+        SITE_NAME: ${SITE_NAME:-TrailForge 峰途}
+    ports:
+      - "${PORT:-3000}:3000"
+    environment:
+      SITE_URL: ${SITE_URL:-http://localhost:3000}
+      SITE_NAME: ${SITE_NAME:-TrailForge 峰途}
+      SITE_LOCALE: ${SITE_LOCALE:-zh-CN}
+    restart: unless-stopped

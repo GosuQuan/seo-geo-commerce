@@ -1,0 +1,31 @@
+# TrailForge 峰途
+> Outdoor gear reference storefront demonstrating production SEO + GEO patterns.
+
+Site: https://example.com (set SITE_URL)
+Note: Google Search / AI Overviews do NOT use llms.txt. This file is for other agents, tools, and documentation discovery.
+
+## Primary pages
+- [Home](/): Brand + featured products
+- [All products](/products): Full catalog listing
+- [About](/about): Organization entity
+- [GEO Audit](/audit): Checklist scorer for local routes
+
+## Categories (answer-first buyer's guides)
+- [徒步鞋](/categories/hiking-shoes)
+- [冲锋衣](/categories/jackets)
+- [登山包](/categories/backpacks)
+- [配件](/categories/accessories)
+
+## Guides
+- [第一次徒步怎么选装备](/guides/first-hike-gear)
+- [户外防水等级怎么读](/guides/waterproof-ratings)
+
+## Machine-readable APIs
+- GET /api/products
+- GET /api/products/{slug}
+- GET /api/facts/{slug}  — citation-friendly product facts
+- GET /api/health
+- GET /api/audit?path=/products/{slug}
+
+## Optional longer index
+- /llms-full.txt
