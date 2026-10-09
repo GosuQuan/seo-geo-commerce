@@ -28,6 +28,9 @@ export function Header() {
           <Link className="hover:text-emerald-800" href="/guides/first-hike-gear">
             选购指南
           </Link>
+          <Link className="hover:text-violet-800" href="/guides/shopify-seo-geo">
+            Shopify 实践
+          </Link>
           <Link className="hover:text-emerald-800" href="/audit">
             GEO 审计
           </Link>

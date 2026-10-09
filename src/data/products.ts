@@ -40,6 +40,11 @@ const raw: Product[] = [
         answer:
           "未使用且不影响二次销售的商品，自签收起 7 日内可申请退换。试穿请在干净室内进行，鞋底无明显磨损。",
       },
+      {
+        question: "这款鞋的关键参数在哪里可以核对？",
+        answer:
+          "页面「规格参数」表、本页 JSON-LD（Product/Offer）与 /api/facts/ridgewalk-gtx-mid 使用同一数据源：重量约 480g/只、GORE-TEX、Vibram Megagrip、售价 ¥1299、现货。避免多处抄写造成 AI 引用冲突。",
+      },
     ],
     aggregateRating: { ratingValue: 4.7, reviewCount: 328 },
     tags: ["防水", "中帮", "GORE-TEX", "周末徒步"],

@@ -10,6 +10,7 @@ import { AnswerFirst } from "@/components/AnswerFirst";
 import { FaqList } from "@/components/FaqList";
 import { ProductCard } from "@/components/ProductCard";
 import { JsonLd } from "@/components/JsonLd";
+import { SeoBridgeCallout } from "@/components/SeoBridgeCallout";
 import { buildMetadata } from "@/lib/seo/metadata";
 import { categoryPageJsonLd } from "@/lib/seo/jsonld";
 
@@ -74,8 +75,14 @@ export default async function CategoryPage({ params }: Props) {
         <FaqList faqs={category.faqs} />
       </div>
 
+      <SeoBridgeCallout variant="category" />
+
       <p className="mt-8 text-sm text-stone-600">
         延伸阅读：{" "}
+        <Link className="text-emerald-800 underline" href="/guides/shopify-seo-geo">
+          Shopify SEO/GEO 实践
+        </Link>
+        {" · "}
         <Link className="text-emerald-800 underline" href="/guides/first-hike-gear">
           第一次徒步怎么选装备
         </Link>

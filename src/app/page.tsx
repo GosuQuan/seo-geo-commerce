@@ -44,6 +44,12 @@ export default function HomePage() {
           >
             新手选购指南
           </Link>
+          <Link
+            href="/guides/shopify-seo-geo"
+            className="rounded-full bg-violet-500/90 px-5 py-2.5 text-sm font-semibold text-white hover:bg-violet-400"
+          >
+            Shopify SEO/GEO
+          </Link>
         </div>
       </section>
 

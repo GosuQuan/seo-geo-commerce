@@ -12,6 +12,7 @@ import { SpecsTable } from "@/components/SpecsTable";
 import { FaqList } from "@/components/FaqList";
 import { ProductCard } from "@/components/ProductCard";
 import { JsonLd } from "@/components/JsonLd";
+import { SeoBridgeCallout } from "@/components/SeoBridgeCallout";
 import { buildMetadata } from "@/lib/seo/metadata";
 import {
   breadcrumbJsonLd,
@@ -125,6 +126,8 @@ export default async function ProductPage({ params }: Props) {
       <div className="mt-10">
         <FaqList faqs={product.faqs} />
       </div>
+
+      <SeoBridgeCallout variant="product" productName={product.name} />
 
       {related.length > 0 && (
         <section className="mt-12" aria-labelledby="related-heading">

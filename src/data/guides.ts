@@ -86,6 +86,72 @@ const raw: Guide[] = [
       },
     ],
   },
+
+  {
+    slug: "shopify-seo-geo",
+    title: "Shopify 站也能复用的 SEO + GEO 实践：从本 Demo 到 Liquid",
+    description:
+      "把峰途 Demo 的 Answer-first、JSON-LD、FAQ、单一事实源映射到 Shopify metafield 与主题 Liquid，给出可复制的技术清单。",
+    answerFirst:
+      "自建 Next 店与 Shopify 店可复用同一套 SEO/GEO 策略：页面最上方放 Answer-first 结论段、规格与价格只维护一份事实源、可见 FAQ 与 FAQPage JSON-LD 同源、Product+Offer 字段与页面显示一致。本指南把仓库里的字段一一映射到 Shopify metafield / Liquid，并链回峰途商品页作对照。",
+    publishedAt: "2026-10-10",
+    updatedAt: "2026-10-10",
+    sections: [
+      {
+        heading: "1. 先复用策略，再换实现",
+        body: "不要指望把本仓库的 React 组件原样贴进 Shopify。要复用的是：Answer-first、单一事实源、SSR/首屏可见的结构化数据、完整句 FAQ、分类买家指南。Shopify 侧用 Online Store 2.0 metafield + Liquid（或 Hydrogen）实现同一契约。",
+      },
+      {
+        heading: "2. 字段对照表（Demo → Shopify）",
+        body: "answerFirst → metafields.seo.answer_first（多行文本，主题首段输出）；specs[] → metafields.specs.* 或 metaobject，表格与 JSON-LD additionalProperty 同读；faqs[] → list/metaobject，页面 FaqList 与 FAQPage schema 同读；price/availability → variant.price + product.available → Offer；brand → product.vendor；Facts API → Storefront API / 自定义 App JSON 端点。",
+      },
+      {
+        heading: "3. PDP 必做：结论段 + Product JSON-LD",
+        body: "在 main-product section 顶部输出 Answer-first；在 </body> 前输出 Product + Offer（priceCurrency、price、availability、url）。评分与评论若展示在页面，再加 AggregateRating。切忌 schema 写一套、页面显示另一套价格或库存。对照本站 /products/ridgewalk-gtx-mid。",
+      },
+      {
+        heading: "4. 集合页：导购首段而不是只有格子",
+        body: "collection.metafields.seo.buyers_guide 输出买家指南；可选 FAQ。本 Demo 的 /categories/hiking-shoes 就是同一模式：Answer-first + guideSections + ItemList JSON-LD。",
+      },
+      {
+        heading: "5. GEO 测量不要停在「装了 SEO App」",
+        body: "用仓库 docs/geo-prompt-panel.md 固定提示词，每周在 ChatGPT / Perplexity / 国内大模型测是否点名品牌与 URL。Search Console 看收录与查询；AI 引用率用「被引用次数 / 提示词条数」做改版对比。",
+      },
+      {
+        heading: "6. 代码与文档入口",
+        body: "完整 Liquid 示例见 docs/blog/shopify-liquid-snippets.md；长文见 docs/blog/seo-geo-ecommerce-playbook.md；架构见 docs/ARCHITECTURE.md。本页底部链到相关商品，方便对照真实 PDP 输出。",
+      },
+    ],
+    relatedProductSlugs: [
+      "ridgewalk-gtx-mid",
+      "cloudtrail-mesh-low",
+      "summit-shell-3in1",
+      "daypack-28",
+    ],
+    relatedCategorySlugs: ["hiking-shoes", "jackets", "backpacks"],
+    faqs: [
+      {
+        question: "Shopify 主题不支持改 JSON-LD 怎么办？",
+        answer:
+          "优先选 Online Store 2.0 且允许编辑 product JSON-LD 的主题；或用自定义 Liquid snippet / App block 注入。禁止只依赖客户端 JS 注入 schema，搜索引擎与多数 AI 抓取更信任首屏 HTML。",
+      },
+      {
+        question: "metafield 和页面文案哪边是事实源？",
+        answer:
+          "选定一边为准：推荐 metafield / metaobject 为单一事实源，主题描述区只渲染该字段，避免运营在富文本里再抄一份导致漂移。",
+      },
+      {
+        question: "本 Demo 的 /audit 在 Shopify 上如何近似？",
+        answer:
+          "可用 CI 脚本抓取预览店 HTML 检查 Answer-first 长度、Offer 字段、FAQ 数量；或 Rich Results 测试 + 自建清单。思路同 src/lib/geo/audit.ts，实现换成对店铺 URL 的爬虫检查即可。",
+      },
+      {
+        question: "一定要上 llms.txt 吗？",
+        answer:
+          "不是必须。Google 忽略 llms.txt。更关键的是 SSR 页面、一致 JSON-LD 与允许搜索类爬虫。Shopify 上若 CDN/防火墙误拦 OAI-SearchBot 等，应优先放行搜索用途。",
+      },
+    ],
+  },
 ];
 
 export const guides: Guide[] = raw.map((g) => GuideSchema.parse(g));
