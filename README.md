@@ -97,7 +97,7 @@ docker compose up --build        # 近生产一键起
 
 ### 店面路由
 
-- `/` 首页 · `/products` · `/products/[slug]` PDP（含 Shopify 映射彩条）
+- `/` 首页（企业级动效：滚动进度条 · 数字递增 · Hero 视差 · 分区 blur 入场 · 商品卡 3D tilt · 特性 Marquee；`useReducedMotion` 全覆盖） · `/products` · `/products/[slug]` PDP（含 Shopify 映射彩条）
 - `/categories/[slug]` 分类买家指南
 - `/guides/*` 含 **Shopify SEO/GEO 实践**、新手装备、防水等级
 - `/audit` 清单打分
@@ -117,6 +117,25 @@ docker compose up --build        # 近生产一键起
 - `GET /api/products` · `/api/facts/[slug]`
 - `/audit` + [`docs/geo-prompt-panel.md`](./docs/geo-prompt-panel.md)
 
+
+---
+
+## 🎬 首页企业动效
+
+商店首页（`HomeExperience`）内置常见 B2B/品牌站动效模式（`motion/react`）：
+
+| 模式 | 说明 |
+|------|------|
+| Scroll progress | 顶部 `scaleX` 跟随 `scrollYProgress` |
+| Stats count-up | 商品/分类/JSON-LD/Audit 进入视口后数字递增 |
+| Hero parallax | 光晕与标题随滚动分层位移 |
+| Section reveal | `whileInView` + blur/fade（`once`） |
+| Product tilt | 轻微透视跟随指针 |
+| Feature marquee | Hero 下标签带，悬停暂停 |
+
+`prefers-reduced-motion` 时关闭视差/递增动画/跑马灯，文案始终在 DOM 中可见（不永久 `opacity: 0`）。
+
+更重的库演示仍在 [`/effects`](./docs/blog/animation-libs.md) **按路由懒加载**。
 
 ---
 

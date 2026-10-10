@@ -14,6 +14,12 @@ export const metadata = buildMetadata({
 export default function HomePage() {
   const featured = products.slice(0, 4);
   return (
-    <HomeExperience featured={featured} categories={categories} guides={guides} />
+    <HomeExperience
+      featured={featured}
+      categories={categories}
+      guides={guides}
+      productCount={products.length}
+      categoryCount={categories.length}
+    />
   );
 }
