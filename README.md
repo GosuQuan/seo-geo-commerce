@@ -3,167 +3,176 @@
 </p>
 
 <p align="center">
-  <strong>峰途 TrailForge</strong> · 可 fork 的 <b>SEO + GEO</b> 电商参考商店（Next.js · MIT）
+  <strong>峰途 TrailForge</strong><br/>
+  <em>SEO + GEO ecommerce demo · Shopify-ready delivery pack · MIT</em>
 </p>
 
 <p align="center">
-  <a href="https://github.com/GosuQuan/seo-geo-commerce/actions"><img src="https://img.shields.io/badge/build-passing-22c55e?style=for-the-badge&logo=githubactions&logoColor=white" alt="build" /></a>
+  <a href="http://117.72.122.109:3088/"><img src="https://img.shields.io/badge/%F0%9F%9A%80_Live_Demo-117.72.122.109%3A3088-22c55e?style=for-the-badge" alt="Live Demo" /></a>
   <a href="./LICENSE"><img src="https://img.shields.io/badge/license-MIT-a855f7?style=for-the-badge&logo=open-source-initiative&logoColor=white" alt="MIT" /></a>
   <a href="https://nextjs.org/"><img src="https://img.shields.io/badge/Next.js-15-000000?style=for-the-badge&logo=nextdotjs&logoColor=white" alt="Next.js" /></a>
   <img src="https://img.shields.io/badge/SEO-ready-0ea5e9?style=for-the-badge&logo=google&logoColor=white" alt="SEO" />
   <img src="https://img.shields.io/badge/GEO-Answer--first-10b981?style=for-the-badge&logo=openai&logoColor=white" alt="GEO" />
-  <img src="https://img.shields.io/badge/Shopify-playbook-96bf48?style=for-the-badge&logo=shopify&logoColor=white" alt="Shopify" />
+  <a href="./docs/shopify/"><img src="https://img.shields.io/badge/Shopify-Liquid_pack-96bf48?style=for-the-badge&logo=shopify&logoColor=white" alt="Shopify" /></a>
   <img src="https://img.shields.io/badge/TypeScript-strict-3178c6?style=for-the-badge&logo=typescript&logoColor=white" alt="TS" />
-  <img src="https://img.shields.io/badge/Effects-lab-ec4899?style=for-the-badge&logo=framer&logoColor=white" alt="Effects" />
+  <img src="https://img.shields.io/badge/R3F_%2B_Motion-lazy-ec4899?style=for-the-badge&logo=framer&logoColor=white" alt="Effects" />
 </p>
 
 <p align="center">
+  <a href="#-live-demo">🟢 Live Demo</a> ·
+  <a href="#-60-秒看懂">60 秒看懂</a> ·
+  <a href="#-亮点网格">亮点</a> ·
+  <a href="#-模拟下单--打赏">购物车→打赏</a> ·
+  <a href="#-shopify-企业交付包">Shopify</a> ·
   <a href="#-快速开始">快速开始</a> ·
-  <a href="#-功能矩阵">功能</a> ·
-  <a href="#-动效实验室">动效实验室</a> ·
-  <a href="#-架构">架构</a> ·
-  <a href="#-shopify-复用">Shopify</a> ·
-  <a href="#-技术博客">博客</a> ·
-  <a href="#-live-demo">Demo</a>
+  <a href="#-english">EN</a>
 </p>
 
 ---
 
-## ✨ 它是什么？
+## 🟢 Live Demo
 
-这不是又一个 GEO 内容 CMS。本仓库是 **店面 + 共享工具库**：
+> **IP 演示已开** · 自定义域 `thisiskingsley.online` **绑定中（pending）** · 请先用下面链接体验。
+
+| 场景 | 直达（根路径，无 `/trailforge`） |
+|------|----------------------------------|
+| 🏠 首页 · Hero / R3F / 咖啡 FAB | http://117.72.122.109:3088/ |
+| 👟 商品列表 | http://117.72.122.109:3088/products |
+| 🛒 购物车 | http://117.72.122.109:3088/cart |
+| 🧾 模拟结账 | http://117.72.122.109:3088/checkout |
+| ☕ 打赏页（收款码） | http://117.72.122.109:3088/tip |
+| 📊 GEO 审计清单 | http://117.72.122.109:3088/audit |
+| ✨ 动效实验室 | http://117.72.122.109:3088/effects |
+| 🧭 Shopify SEO/GEO 指南 | http://117.72.122.109:3088/guides/shopify-seo-geo |
+| 🔌 Facts API 样例 | http://117.72.122.109:3088/api/facts/ridgewalk-gtx-mid |
+| ❤️ 健康检查 | http://117.72.122.109:3088/api/health |
+
+```text
+  ┌─────────────┐     ┌──────────┐     ┌───────────┐     ┌─────────┐
+  │ 挑商品 / PDP │ ──▶ │  /cart   │ ──▶ │ /checkout │ ──▶ │  /tip   │
+  │ + 右侧咖啡FAB│     │ 看已选   │     │ 模拟下单  │     │ 打赏支付│
+  └─────────────┘     └──────────┘     └───────────┘     └─────────┘
+```
+
+手机浏览器直接开 IP 链接即可；布局为 Tailwind 响应式。域名绑好后会切到 `http://thisiskingsley.online`（HTTPS 另配）。
+
+---
+
+## ⚡ 60 秒看懂
+
+这不是又一个 GEO 内容 CMS，而是 **可 fork 的店面 + 工具库 + Shopify 交付包**：
 
 | 传统做法 | 本 Demo |
 |---------|---------|
-| 页面文案与结构化数据两套稿 | `src/data/` **单一事实源** |
-| 只优化十个蓝链 | 同时面向 **AI 答案引用（GEO）** |
-| 黑盒「投喂」技巧 | Answer-first · FAQ · 规格表 · 可审计清单 |
-| 难上线的玩具 | Docker · healthcheck · 严格 TypeScript |
+| 文案与 JSON-LD 两套稿 | `src/data/` **单一事实源**（Zod） |
+| 只卷十个蓝链 | 同时面向 **AI 答案引用（GEO）** |
+| 黑盒「投喂」技巧 | Answer-first · FAQ · 规格表 · [`/audit`](http://117.72.122.109:3088/audit) |
+| 难交付的玩具 | Shopify Liquid 包 · 企业亮点文档 · MIT |
 
-> **重要：** Google **忽略** `llms.txt`。我们仍提供它给其他 Agent；**不要**把它当成 Google AI Overviews 的开关。Googlebot ≠ Google-Extended。
-
----
-
-## 🚀 快速开始
-
-```bash
-git clone https://github.com/GosuQuan/seo-geo-commerce.git
-cd seo-geo-commerce
-cp .env.example .env.local
-npm install
-npm run dev
-```
-
-打开 [http://localhost:3000](http://localhost:3000)。
-
-```bash
-npm run build && npm run start   # 生产
-npm run typecheck && npm run lint
-docker compose up --build        # 近生产一键起
-# 健康检查：GET /api/health
-```
-
-环境变量见 `.env.example`（`SITE_URL` · `SITE_NAME` · `SITE_LOCALE`）。
+> Google **忽略** `llms.txt`。仓库仍提供它给其他 Agent；**不要**当成 Google AI Overviews 开关。Googlebot ≠ Google-Extended。
 
 ---
 
-## 🌐 Live Demo
+## ✨ 亮点网格
 
-| | |
-|--|--|
-| 🏠 首页 | http://117.72.122.109/trailforge |
-| 👟 旗舰 PDP | http://117.72.122.109/trailforge/products/ridgewalk-gtx-mid |
-| 🧭 Shopify 实践指南 | http://117.72.122.109/trailforge/guides/shopify-seo-geo |
-| 📊 GEO 审计 | http://117.72.122.109/trailforge/audit |
-| ✨ 动效实验室 | http://117.72.122.109/trailforge/effects |
-| 🧾 Facts API | http://117.72.122.109/trailforge/api/facts/ridgewalk-gtx-mid |
+| | 能力 | 你在 Demo 里怎么验 |
+|--|------|-------------------|
+| 🎯 | **Answer-first SEO+GEO** | 打开任意 PDP / 分类 / 指南，首屏短答 + FAQ + 规格与 JSON-LD **同源** |
+| 🛒 | **购物车 → 模拟下单 → 打赏** | [`/cart`](http://117.72.122.109:3088/cart) → [`/checkout`](http://117.72.122.109:3088/checkout) → [`/tip`](http://117.72.122.109:3088/tip) |
+| ☕ | **侧边「请我喝杯咖啡」FAB** | 全站右侧悬浮入口，进打赏页（支付宝/微信收款码） |
+| 🎬 | **Motion + 懒加载 R3F Hero** | 首页滚动进度 / 数字递增 / tilt / marquee；Hero 3D `next/dynamic` 不挡 SSR |
+| 🧪 | **动效实验室 8 库** | [`/effects`](http://117.72.122.109:3088/effects) 按路由懒加载 Motion / GSAP / Lottie / Spring / R3F… |
+| 📦 | **Shopify Liquid 交付包** | [`docs/shopify/`](./docs/shopify/) + [`INSTALL.md`](./docs/shopify/INSTALL.md) |
+| 🏢 | **企业交付亮点** | [`docs/enterprise-delivery-highlights.md`](./docs/enterprise-delivery-highlights.md) |
+| ✅ | **GEO 审计页** | [`/audit`](http://117.72.122.109:3088/audit) 清单打分，可对客户演示验收 |
 
-> IP Demo（路径前缀 `/trailforge`）。生产请换自定义域 + HTTPS。2G 小机勿在服务器上硬编大构建。
+<details>
+<summary><b>首页企业动效一览（点击展开）</b></summary>
 
----
-
-## 🧩 功能矩阵
-
-```text
-┌──────────────┬─────────────────────────────────────────────────────┐
-│ 店面         │ /products · /categories · /guides · /about · /audit │
-│ 动效实验室   │ /effects · 8 库按路由懒加载（Motion/GSAP/Lottie/…）   │
-│ SEO          │ metadata · sitemap · robots · 丰富 JSON-LD          │
-│ GEO          │ Answer-first · FAQ · Facts API · crawler policy     │
-│ Shopify 桥   │ SeoBridgeCallout · /guides/shopify-seo-geo          │
-│ 文档         │ Playbook · Liquid snippets · Architecture           │
-└──────────────┴─────────────────────────────────────────────────────┘
-```
-
-### 店面路由
-
-- `/` 首页（企业级动效：滚动进度条 · 数字递增 · Hero 视差 · **懒加载 R3F Hero** · 分区 blur 入场 · 商品卡 3D tilt · 特性 Marquee；`useReducedMotion` 全覆盖） · `/products` · `/products/[slug]` PDP（含 Shopify 映射彩条）
-- `/categories/[slug]` 分类买家指南
-- `/guides/*` 含 **Shopify SEO/GEO 实践**、新手装备、防水等级
-- `/audit` 清单打分
-- `/effects` **动效实验室**（8 个子演示，懒加载）
-
-### SEO
-
-- `generateMetadata`（canonical / OG / Twitter）
-- `app/sitemap.ts` · `app/robots.ts`
-- JSON-LD：Organization · WebSite · BreadcrumbList · Product+Offer+AggregateRating · FAQPage · ItemList · Article
-
-### GEO
-
-- Answer-first（PDP / 分类 / 指南）
-- 规格表 ↔ JSON-LD ↔ Facts API **同源**
-- `src/config/crawlers.ts`（search vs training）
-- `GET /api/products` · `/api/facts/[slug]`
-- `/audit` + [`docs/geo-prompt-panel.md`](./docs/geo-prompt-panel.md)
-
-
----
-
-## 🎬 首页企业动效
-
-商店首页（`HomeExperience`）内置常见 B2B/品牌站动效模式（`motion/react`）：
+<br/>
 
 | 模式 | 说明 |
 |------|------|
 | Scroll progress | 顶部 `scaleX` 跟随 `scrollYProgress` |
-| Stats count-up | 商品/分类/JSON-LD/Audit 进入视口后数字递增 |
-| Hero parallax | 光晕与标题随滚动分层位移 |
+| Stats count-up | 进入视口后数字递增 |
+| Hero parallax | 光晕与标题分层位移 |
 | Section reveal | `whileInView` + blur/fade（`once`） |
 | Product tilt | 轻微透视跟随指针 |
-| Feature marquee | Hero 下标签带，悬停暂停 |
-| Hero R3F (lazy) | 右侧 3D 鞋盒/粒子场景：`LazyHomeHero3D` → `next/dynamic(..., { ssr: false })`，不阻塞其它页 SSR |
+| Feature marquee | 标签带，悬停暂停 |
+| Hero R3F (lazy) | `LazyHomeHero3D` → `ssr: false`，不进其他路由首包 |
 
-`prefers-reduced-motion` 时关闭视差/递增动画/跑马灯，Hero 3D 退化为静态渐变块；文案始终在 DOM 中可见（不永久 `opacity: 0`）。
+`prefers-reduced-motion` 时关闭视差/递增/跑马灯，Hero 3D 退化为静态块；文案始终在 DOM 可见。
 
-更重的库演示仍在 [`/effects`](./docs/blog/animation-libs.md) **按路由懒加载**。首页 Hero 的 Three/R3F 同样是 **客户端懒加载**，不会打进其它路由的首包。
+</details>
 
----
+<details>
+<summary><b>动效实验室路由（点击展开）</b></summary>
 
-## ✨ 动效实验室
-
-可商用开源动效 **全量进 Demo**，但 **按路由懒加载**；首页 Hero 仅客户端懒加载一小块 R3F，完整 Three 演示仍在 `/effects/r3f`。
+<br/>
 
 | 路由 | 库 | 许可 |
 |------|----|------|
-| [`/effects`](http://localhost:3000/effects) | Hub 彩色卡片 | — |
+| `/effects` | Hub | — |
 | `/effects/motion` | [Motion](https://motion.dev/) | MIT |
 | `/effects/gsap` | [GSAP](https://gsap.com/) core | 核心可商用* |
-| `/effects/lottie` | [lottie-react](https://www.npmjs.com/package/lottie-react) | MIT |
-| `/effects/auto-animate` | [Auto-Animate](https://auto-animate.formkit.com/) | MIT |
-| `/effects/spring` | [React Spring](https://www.react-spring.dev/) | MIT |
-| `/effects/animate-css` | [Animate.css](https://animate.style/) | MIT（仅该页引入 CSS） |
+| `/effects/lottie` | lottie-react | MIT |
+| `/effects/auto-animate` | Auto-Animate | MIT |
+| `/effects/spring` | React Spring | MIT |
+| `/effects/animate-css` | Animate.css | MIT（仅该页引入 CSS） |
 | `/effects/tailwind` | Tailwind `@keyframes` | MIT |
 | `/effects/r3f` | Three.js + R3F + drei | MIT |
 
-\* GSAP 部分 Club 插件需付费授权；本仓库 Demo **只依赖 `gsap` 核心**。详见 [docs/blog/animation-libs.md](./docs/blog/animation-libs.md)。
+\* 本仓库 Demo **只依赖 `gsap` 核心**。详见 [docs/blog/animation-libs.md](./docs/blog/animation-libs.md)。
 
-```bash
-npm run dev
-# 打开 http://localhost:3000/effects
+</details>
+
+---
+
+## 🛒 模拟下单 → 打赏
+
+面向访客的「可玩」闭环（**非真实支付**；结账成功后跳转打赏页展示收款码）：
+
+```mermaid
+flowchart LR
+  A["首页 / 商品"] --> B["加入购物车"]
+  B --> C["/cart 查看已选"]
+  C --> D["/checkout 模拟下单"]
+  D --> E["/tip 打赏页"]
+  F["侧边咖啡 FAB"] --> E
 ```
 
-实现要点：`src/components/effects/Lazy*.tsx` → `next/dynamic(..., { ssr: false })`。
+- 主路径：挑商品 → 购物车 → 结账 → **支付页 = 打赏页**
+- 旁路：任意页右侧 **「请我喝杯咖啡」** → `/tip`
+- Shopify 主题侧对应说明见 [`docs/shopify/snippets/cart-tip-note.liquid`](./docs/shopify/snippets/cart-tip-note.liquid)（外链备注，**不替代** Checkout）
+
+---
+
+## 📦 Shopify 企业交付包
+
+**复用策略与契约，不复用 React 源码。**
+
+📁 **[`docs/shopify/`](./docs/shopify/)** — snippets · OS 2.0 section · [`INSTALL.md`](./docs/shopify/INSTALL.md) · 可选 CSS
+
+| Demo 字段 | Shopify |
+|-----------|---------|
+| `answerFirst` | `metafields.seo.answer_first` |
+| `specs[]` | `metafields.specs.*` |
+| `faqs[]` | `metafields.seo.faq` |
+| Product JSON-LD | `snippets/product-jsonld.liquid` |
+| `/api/facts` | Storefront API / App Proxy |
+| `/tip` 演示 | `snippets/cart-tip-note.liquid` |
+
+站内指南：http://117.72.122.109:3088/guides/shopify-seo-geo · 精简对照：[Liquid 博客文](./docs/blog/shopify-liquid-snippets.md)
+
+---
+
+## 🏢 企业交付亮点
+
+方案 / SOW / 验收用（中文，**不编造指标**）：
+
+**[`docs/enterprise-delivery-highlights.md`](./docs/enterprise-delivery-highlights.md)**
+
+摘要：Answer-first · 单一事实源 · AI 爬虫策略 · `/audit` · Shopify Liquid 包 · 模拟购物车→打赏 · 动效/R3F 懒加载 · 响应式 · MIT · 可分期实施与风险边界。
 
 ---
 
@@ -182,86 +191,82 @@ flowchart LR
     F["Facts API"]
   end
   subgraph X["跨平台"]
-    SH["Shopify Liquid playbook"]
+    SH["Shopify Liquid pack"]
   end
   D --> P --> J
   D --> F
   P -. 同一契约 .-> SH
 ```
 
-更完整图示：[docs/ARCHITECTURE.md](./docs/ARCHITECTURE.md)
+完整图示：[docs/ARCHITECTURE.md](./docs/ARCHITECTURE.md)
 
 ```text
 src/
-  app/          # App Router 页面与 API
-  components/   # AnswerFirst · SpecsTable · FaqList · SeoBridgeCallout · effects/*
+  app/          # App Router · API · /cart · /checkout · /tip · /audit · /effects
+  components/   # AnswerFirst · SpecsTable · FaqList · TipFab · cart · effects/*
   config/       # site.ts · crawlers.ts
   data/         # 商品/分类/指南 + Zod
   lib/seo|geo/  # metadata · jsonld · audit · facts
 docs/
-  shopify/      # 企业 Liquid 交付包（snippets / sections / INSTALL）
-  blog/         # 技术长文 + Liquid 精简对照
+  shopify/      # 企业 Liquid 交付包
+  blog/         # Playbook · Liquid 对照 · 动效说明
   enterprise-delivery-highlights.md
-  assets/       # README 动效 banner
-  geo-prompt-panel.md
+  assets/       # README banner.svg
 ```
 
 ---
 
-## 🛒 Shopify 复用
+## 🚀 快速开始
 
-**复用策略，不复用 React 源码。** 企业主题开发请直接使用交付包：
+```bash
+git clone https://github.com/GosuQuan/seo-geo-commerce.git
+cd seo-geo-commerce
+cp .env.example .env.local
+npm install
+npm run dev
+```
 
-📦 **[`docs/shopify/`](./docs/shopify/)** — snippets（Answer-first / 规格 / FAQ / Product+FAQ JSON-LD / 购物车 tip 说明）· OS 2.0 section · `INSTALL.md` · 可选 CSS
+打开 [http://localhost:3000](http://localhost:3000)。
 
-| Demo 字段 | Shopify |
-|-----------|---------|
-| `answerFirst` | `metafields.seo.answer_first` |
-| `specs[]` | `metafields.specs.*` |
-| `faqs[]` | `metafields.seo.faq` |
-| Product JSON-LD | `docs/shopify/snippets/product-jsonld.liquid` |
-| `/api/facts` | Storefront API / App Proxy |
-| `/tip` 演示 | `snippets/cart-tip-note.liquid`（外链说明，不替代 Checkout） |
+```bash
+npm run build && npm run start   # 生产
+npm run typecheck && npm run lint
+docker compose up --build        # 近生产
+# 健康检查：GET /api/health
+```
 
-站内指南：`/guides/shopify-seo-geo` · 精简对照：[Liquid 博客文](./docs/blog/shopify-liquid-snippets.md)  
-每个 PDP / 分类页底部有彩色 **SeoBridgeCallout** 对照表。
+环境变量见 `.env.example`（`SITE_URL` · `SITE_NAME` · `SITE_LOCALE`）。
 
 ---
 
+## 📚 文档索引
 
-## 🏢 企业交付亮点
-
-面向方案 / SOW / 验收说明（中文，不编造指标）：
-
-**[`docs/enterprise-delivery-highlights.md`](./docs/enterprise-delivery-highlights.md)**
-
-摘要：Answer-first · 单一事实源 · AI 爬虫策略 · `/audit` · Shopify Liquid 包 · 模拟购物车→打赏演示 · 动效/R3F 懒加载 · 响应式 · MIT · 可分期实施与风险边界。
-
-## 📚 技术博客
-
-| 文章 | 说明 |
+| 文档 | 说明 |
 |------|------|
-| [SEO + GEO 电商实战手册](./docs/blog/seo-geo-ecommerce-playbook.md) | 原则 · 文件映射 · 测量 · 上线清单（中文为主） |
-| [Shopify Liquid 交付包](./docs/shopify/) | 按文件拆分的 snippets / section / INSTALL（推荐） |
-| [Shopify Liquid 精简对照](./docs/blog/shopify-liquid-snippets.md) | Answer-first / JSON-LD / FAQ 博客版 |
+| [SEO + GEO 实战手册](./docs/blog/seo-geo-ecommerce-playbook.md) | 原则 · 文件映射 · 上线清单 |
+| [Shopify Liquid 交付包](./docs/shopify/) | snippets / section / INSTALL（推荐交付） |
+| [Shopify Liquid 精简对照](./docs/blog/shopify-liquid-snippets.md) | 博客版 Answer-first / JSON-LD / FAQ |
 | [企业交付亮点](./docs/enterprise-delivery-highlights.md) | 方案书用：亮点、分期、风险边界 |
-| [ARCHITECTURE](./docs/ARCHITECTURE.md) | Mermaid 架构图 |
+| [ARCHITECTURE](./docs/ARCHITECTURE.md) | Mermaid 架构 |
 | [GEO 提示词面板](./docs/geo-prompt-panel.md) | 固定提示词测 AI 引用 |
+| [动效库说明](./docs/blog/animation-libs.md) | Effects Lab 依赖与许可 |
 
 ---
 
 ## ⚠️ Caveats
 
 - Demo 评价分为虚构但自洽数据，上线请换真实源。
+- `/checkout` → `/tip` 是 **演示闭环**，不是真实支付网关。
 - `llms.txt` **不是** Google 官方信号。
 - Disallow `Google-Extended` 不影响经典搜索收录。
 - GEO 无银弹：公开可抓取、事实清晰、实体一致，比堆词重要。
+- 线上当前为 IP `:3088`；域名绑定完成后请更新 `SITE_URL` 与本 README 链接。
 
 ---
 
 ## 🤝 贡献
 
-见 [CONTRIBUTING.md](./CONTRIBUTING.md)。Issue / PR 欢迎。
+见 [CONTRIBUTING.md](./CONTRIBUTING.md)。Issue / PR 欢迎。打赏体验：http://117.72.122.109:3088/tip
 
 ---
 
@@ -271,20 +276,17 @@ docs/
 
 ---
 
-## English summary
+## 🇬🇧 English
 
-**seo-geo-commerce** is a production-oriented **reference storefront + toolkit** for SEO and Generative Engine Optimization. Fork it for outdoor / specialty e-commerce:
+**seo-geo-commerce** is a production-oriented **reference storefront + toolkit** for SEO and Generative Engine Optimization (outdoor / specialty ecommerce demo, Chinese UI).
 
-- Next.js 15 App Router · Chinese demo catalog · Zod single source of truth  
-- JSON-LD · robots policy · `/api/facts` · GEO audit UI  
-- **Shopify delivery pack** (`docs/shopify/`) + enterprise highlights (ZH)  
-- **Effects Lab** (`/effects`) — Motion, GSAP, Lottie, Auto-Animate, Spring, Animate.css, Tailwind, R3F (route-lazy)  
-- Docker Compose · colorful docs for GitHub showcase  
+- Next.js 15 · Zod single source of truth · JSON-LD · Facts API · `/audit`
+- **Mock cart → checkout → tip page** + floating coffee FAB
+- **Shopify Liquid delivery pack** ([`docs/shopify/`](./docs/shopify/)) + [enterprise highlights](./docs/enterprise-delivery-highlights.md) (ZH)
+- Homepage Motion + lazy R3F · Effects Lab (`/effects`, route-lazy)
+- Live demo: http://117.72.122.109:3088/ · custom domain pending
 
 ```bash
 npm install && npm run dev
-# or
-docker compose up --build
+# or: docker compose up --build
 ```
-
-Live IP demo: http://117.72.122.109/trailforge
