@@ -8,7 +8,7 @@ export const siteConfig = {
   descriptionEn:
     "TrailForge — outdoor gear reference storefront optimized for search engines and generative engines.",
   logoPath: "/images/logo.svg",
-  email: "hello@trailforge.example",
+  email: "ikingsleyes@gmail.com",
   phone: "+86-400-800-0000",
   address: {
     streetAddress: "示例路 88 号",
@@ -18,10 +18,15 @@ export const siteConfig = {
     addressCountry: "CN",
   },
   sameAs: [
-    "https://github.com/example/seo-geo-commerce",
+    "https://github.com/GosuQuan/seo-geo-commerce",
     "https://x.com/trailforge",
   ],
   currency: "CNY",
+  donate: {
+    alipayImage: "/images/donate/alipay.png",
+    wechatImage: "/images/donate/wechat.png",
+    amounts: [6.6, 16.6, 66] as const,
+  },
 } as const;
 
 export type SiteConfig = typeof siteConfig;

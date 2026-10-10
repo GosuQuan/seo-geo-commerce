@@ -43,6 +43,13 @@ export function Header() {
           <Link className="hover:text-emerald-800" href="/about">
             关于
           </Link>
+          <Link
+            className="rounded-full bg-gradient-to-r from-amber-500 to-rose-500 px-2.5 py-0.5 text-xs font-bold text-white shadow-sm hover:opacity-90"
+            href="/tip"
+            title="打赏支持开源"
+          >
+            打赏
+          </Link>
         </nav>
       </div>
     </header>

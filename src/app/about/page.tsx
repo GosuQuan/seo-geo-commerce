@@ -3,6 +3,7 @@ import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { siteConfig } from "@/config/site";
 import { buildMetadata } from "@/lib/seo/metadata";
 import { breadcrumbJsonLd, organizationJsonLd } from "@/lib/seo/jsonld";
+import Link from "next/link";
 
 export const metadata = buildMetadata({
   title: "关于峰途 TrailForge",
@@ -35,7 +36,11 @@ export default function AboutPage() {
           </div>
           <div className="flex gap-3">
             <dt className="w-24 text-stone-500">邮箱</dt>
-            <dd>{siteConfig.email}</dd>
+            <dd>
+              <a className="text-emerald-800 hover:underline" href={`mailto:${siteConfig.email}`}>
+                {siteConfig.email}
+              </a>
+            </dd>
           </div>
           <div className="flex gap-3">
             <dt className="w-24 text-stone-500">电话</dt>
@@ -47,6 +52,14 @@ export default function AboutPage() {
               {siteConfig.address.addressLocality}
               {siteConfig.address.addressRegion}
               {siteConfig.address.streetAddress}
+            </dd>
+          </div>
+          <div className="flex gap-3">
+            <dt className="w-24 text-stone-500">支持</dt>
+            <dd>
+              <Link className="font-medium text-amber-700 hover:underline" href="/tip">
+                打赏支持开源 →
+              </Link>
             </dd>
           </div>
         </dl>
