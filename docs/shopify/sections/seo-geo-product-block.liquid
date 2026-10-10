@@ -1,0 +1,48 @@
+{% comment %}
+  OS 2.0 section: Answer-first + specs + FAQ for the product template.
+  Add via theme editor or product.json.
+{% endcomment %}
+{{ 'seo-geo-product.css' | asset_url | stylesheet_tag }}
+
+<div class="tf-seo-geo-block page-width section-{{ section.id }}-padding">
+  {% render 'answer-first-product', product: product %}
+
+  {%- if section.settings.show_specs -%}
+    {% render 'product-specs', product: product %}
+  {%- endif -%}
+
+  {%- if section.settings.show_faq -%}
+    {% render 'product-faq', product: product %}
+  {%- endif -%}
+</div>
+
+{% schema %}
+{
+  "name": "SEO/GEO product block",
+  "tag": "section",
+  "class": "section-seo-geo-product",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "show_specs",
+      "label": "Show specs table",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_faq",
+      "label": "Show FAQ accordion",
+      "default": true
+    },
+    {
+      "type": "paragraph",
+      "content": "Requires metafields seo.answer_first, seo.faq, and optionally specs.*. JSON-LD: render snippet product-jsonld once in the product template (not inside this section) to avoid duplicates."
+    }
+  ],
+  "presets": [
+    {
+      "name": "SEO/GEO product block"
+    }
+  ]
+}
+{% endschema %}

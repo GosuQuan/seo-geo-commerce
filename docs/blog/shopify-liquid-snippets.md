@@ -2,6 +2,8 @@
 
 > 对应 Online Store 2.0 主题。把本 Demo 的 `answerFirst` / `specs` / `faqs` 契约迁到 metafield 后，按下列片段接入。
 
+> **完整交付包（推荐）**：按文件拆分的可粘贴 Liquid、OS 2.0 section、安装步骤与可选 CSS 见 [`docs/shopify/`](../shopify/)。本文保留精简对照；生产接入请以 `docs/shopify/` 为准。
+
 ---
 
 ## 0. 建议 metafield

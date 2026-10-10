@@ -1,0 +1,21 @@
+{% comment %}
+  Visible FAQ — MUST stay in sync with product-jsonld FAQPage mainEntity.
+  Metafield: product.metafields.seo.faq (list of metaobjects with question + answer)
+  Usage: {% render 'product-faq', product: product %}
+{% endcomment %}
+{%- assign faq_list = product.metafields.seo.faq.value -%}
+{%- if faq_list != blank and faq_list.size > 0 -%}
+  <section class="tf-faq" aria-labelledby="tf-faq-heading" data-geo="faq">
+    <h2 id="tf-faq-heading" class="tf-faq__title">常见问题</h2>
+    <div class="tf-faq__list">
+      {%- for item in faq_list -%}
+        <details class="tf-faq__item">
+          <summary class="tf-faq__q">{{ item.question | escape }}</summary>
+          <div class="tf-faq__a">
+            <p>{{ item.answer | escape | newline_to_br }}</p>
+          </div>
+        </details>
+      {%- endfor -%}
+    </div>
+  </section>
+{%- endif -%}

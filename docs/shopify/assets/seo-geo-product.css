@@ -1,0 +1,91 @@
+/* Optional baseline styles for TrailForge Shopify SEO/GEO snippets */
+.tf-answer-first {
+  border: 1px solid #d1fae5;
+  background: rgba(236, 253, 245, 0.85);
+  border-radius: 0.75rem;
+  padding: 0.75rem 1rem;
+  margin: 0 0 1.25rem;
+}
+.tf-answer-first__text {
+  margin: 0;
+  line-height: 1.6;
+  color: #292524;
+  font-size: 1rem;
+}
+.tf-specs {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 0 0 1.5rem;
+  font-size: 0.95rem;
+}
+.tf-specs__caption {
+  text-align: left;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  caption-side: top;
+}
+.tf-specs th,
+.tf-specs td {
+  border-bottom: 1px solid #e7e5e4;
+  padding: 0.5rem 0.25rem;
+  text-align: left;
+  vertical-align: top;
+}
+.tf-specs th {
+  width: 36%;
+  color: #57534e;
+  font-weight: 500;
+}
+.tf-faq__title {
+  font-size: 1.25rem;
+  margin: 0 0 0.75rem;
+}
+.tf-faq__item {
+  border: 1px solid #e7e5e4;
+  border-radius: 0.5rem;
+  padding: 0.5rem 0.75rem;
+  margin-bottom: 0.5rem;
+}
+.tf-faq__q {
+  cursor: pointer;
+  font-weight: 600;
+}
+.tf-faq__a {
+  margin-top: 0.5rem;
+  color: #44403c;
+}
+.tf-cart-tip {
+  border: 1px solid #fed7aa;
+  background: #fff7ed;
+  border-radius: 0.75rem;
+  padding: 1rem 1.25rem;
+  margin: 1rem 0;
+}
+.tf-cart-tip--muted {
+  border-color: #e7e5e4;
+  background: #fafaf9;
+}
+.tf-cart-tip__body {
+  margin: 0 0 0.75rem;
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+.tf-cart-tip__link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-weight: 600;
+  color: #c2410c;
+  text-decoration: none;
+}
+.tf-cart-tip__link:hover {
+  text-decoration: underline;
+}
+.tf-seo-geo-block {
+  margin: 1.5rem auto;
+}
+@media (max-width: 749px) {
+  .tf-specs th {
+    width: 42%;
+  }
+}

@@ -199,7 +199,9 @@ src/
   data/         # 商品/分类/指南 + Zod
   lib/seo|geo/  # metadata · jsonld · audit · facts
 docs/
-  blog/         # 技术长文 + Liquid 片段
+  shopify/      # 企业 Liquid 交付包（snippets / sections / INSTALL）
+  blog/         # 技术长文 + Liquid 精简对照
+  enterprise-delivery-highlights.md
   assets/       # README 动效 banner
   geo-prompt-panel.md
 ```
@@ -208,27 +210,41 @@ docs/
 
 ## 🛒 Shopify 复用
 
-**复用策略，不复用 React 源码。**
+**复用策略，不复用 React 源码。** 企业主题开发请直接使用交付包：
+
+📦 **[`docs/shopify/`](./docs/shopify/)** — snippets（Answer-first / 规格 / FAQ / Product+FAQ JSON-LD / 购物车 tip 说明）· OS 2.0 section · `INSTALL.md` · 可选 CSS
 
 | Demo 字段 | Shopify |
 |-----------|---------|
 | `answerFirst` | `metafields.seo.answer_first` |
 | `specs[]` | `metafields.specs.*` |
 | `faqs[]` | `metafields.seo.faq` |
-| Product JSON-LD | Liquid snippet（见博客） |
+| Product JSON-LD | `docs/shopify/snippets/product-jsonld.liquid` |
 | `/api/facts` | Storefront API / App Proxy |
+| `/tip` 演示 | `snippets/cart-tip-note.liquid`（外链说明，不替代 Checkout） |
 
-站内指南：[`/guides/shopify-seo-geo`](http://117.72.122.109/trailforge/guides/shopify-seo-geo)  
+站内指南：`/guides/shopify-seo-geo` · 精简对照：[Liquid 博客文](./docs/blog/shopify-liquid-snippets.md)  
 每个 PDP / 分类页底部有彩色 **SeoBridgeCallout** 对照表。
 
 ---
+
+
+## 🏢 企业交付亮点
+
+面向方案 / SOW / 验收说明（中文，不编造指标）：
+
+**[`docs/enterprise-delivery-highlights.md`](./docs/enterprise-delivery-highlights.md)**
+
+摘要：Answer-first · 单一事实源 · AI 爬虫策略 · `/audit` · Shopify Liquid 包 · 模拟购物车→打赏演示 · 动效/R3F 懒加载 · 响应式 · MIT · 可分期实施与风险边界。
 
 ## 📚 技术博客
 
 | 文章 | 说明 |
 |------|------|
 | [SEO + GEO 电商实战手册](./docs/blog/seo-geo-ecommerce-playbook.md) | 原则 · 文件映射 · 测量 · 上线清单（中文为主） |
-| [Shopify Liquid 片段](./docs/blog/shopify-liquid-snippets.md) | Answer-first / JSON-LD / FAQ / 集合页可复制代码 |
+| [Shopify Liquid 交付包](./docs/shopify/) | 按文件拆分的 snippets / section / INSTALL（推荐） |
+| [Shopify Liquid 精简对照](./docs/blog/shopify-liquid-snippets.md) | Answer-first / JSON-LD / FAQ 博客版 |
+| [企业交付亮点](./docs/enterprise-delivery-highlights.md) | 方案书用：亮点、分期、风险边界 |
 | [ARCHITECTURE](./docs/ARCHITECTURE.md) | Mermaid 架构图 |
 | [GEO 提示词面板](./docs/geo-prompt-panel.md) | 固定提示词测 AI 引用 |
 
@@ -261,7 +277,7 @@ docs/
 
 - Next.js 15 App Router · Chinese demo catalog · Zod single source of truth  
 - JSON-LD · robots policy · `/api/facts` · GEO audit UI  
-- **Shopify playbook** with copy-paste Liquid snippets  
+- **Shopify delivery pack** (`docs/shopify/`) + enterprise highlights (ZH)  
 - **Effects Lab** (`/effects`) — Motion, GSAP, Lottie, Auto-Animate, Spring, Animate.css, Tailwind, R3F (route-lazy)  
 - Docker Compose · colorful docs for GitHub showcase  
 

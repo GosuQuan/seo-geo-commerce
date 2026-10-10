@@ -1,0 +1,90 @@
+{% comment %}
+  Product + Offer JSON-LD, plus optional FAQPage (separate script).
+  Aligns with Demo src/lib/seo/jsonld.ts: product description = answer_first;
+  FAQ visible HTML and schema share metafields.seo.faq.
+  Does NOT emit aggregateRating unless you pass include_rating: true AND product has reviews
+  (avoid shipping fictional stars to production).
+  Usage:
+    {% render 'product-jsonld', product: product %}
+    {% render 'product-jsonld', product: product, include_specs_in_ld: true %}
+{% endcomment %}
+{%- liquid
+  assign af = product.metafields.seo.answer_first.value
+  if af == blank
+    assign af = product.description | strip_html | truncate: 220
+  endif
+  assign variant = product.selected_or_first_available_variant
+  assign price_str = variant.price | money_without_currency | replace: ',', ''
+  assign currency = cart.currency.iso_code | default: shop.currency
+  assign product_url = request.origin | append: product.url
+  if product.featured_image
+    assign img_url = product.featured_image | image_url: width: 1200
+  endif
+  assign faq_list = product.metafields.seo.faq.value
+-%}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Product",
+  "name": {{ product.title | json }},
+  "description": {{ af | json }},
+  {%- if img_url != blank -%}
+  "image": [{{ img_url | prepend: "https:" | json }}],
+  {%- endif -%}
+  "sku": {{ variant.sku | json }},
+  "brand": {
+    "@type": "Brand",
+    "name": {{ product.vendor | json }}
+  },
+  "offers": {
+    "@type": "Offer",
+    "url": {{ product_url | json }},
+    "priceCurrency": {{ currency | json }},
+    "price": {{ price_str | json }},
+    "availability": "https://schema.org/{% if product.available %}InStock{% else %}OutOfStock{% endif %}",
+    "itemCondition": "https://schema.org/NewCondition",
+    "seller": {
+      "@type": "Organization",
+      "name": {{ shop.name | json }}
+    }
+  }
+  {%- if include_specs_in_ld and product.metafields.specs != blank -%}
+  ,
+  "additionalProperty": [
+    {%- assign first_prop = true -%}
+    {%- for spec in product.metafields.specs -%}
+      {%- assign spec_val = product.metafields.specs[spec].value -%}
+      {%- if spec_val != blank -%}
+        {%- unless first_prop -%},{%- endunless -%}
+        {
+          "@type": "PropertyValue",
+          "name": {{ spec | replace: '_', ' ' | json }},
+          "value": {{ spec_val | json }}
+        }
+        {%- assign first_prop = false -%}
+      {%- endif -%}
+    {%- endfor -%}
+  ]
+  {%- endif -%}
+}
+</script>
+{%- if faq_list != blank and faq_list.size > 0 -%}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {%- for item in faq_list -%}
+    {
+      "@type": "Question",
+      "name": {{ item.question | json }},
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": {{ item.answer | json }}
+      }
+    }{% unless forloop.last %},{% endunless %}
+    {%- endfor -%}
+  ]
+}
+</script>
+{%- endif -%}

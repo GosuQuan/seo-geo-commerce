@@ -1,0 +1,32 @@
+{% comment %}
+  Optional cart callout — mirrors Demo flow: cart → checkout → tip/sponsor page.
+  Does NOT create Shopify orders or payments. Safe for demos / open-source sponsorship.
+  Params:
+    tip_url   — absolute or root-relative URL (theme setting or hard-coded sponsor page)
+    tip_label — button label (default: 支持开源 / 请我喝杯咖啡)
+  Usage:
+    {% render 'cart-tip-note', tip_url: settings.tip_page_url %}
+    {% render 'cart-tip-note', tip_url: 'https://example.com/tip', tip_label: '请我喝杯咖啡' %}
+{% endcomment %}
+{%- liquid
+  assign tip_href = tip_url | default: ''
+  assign tip_text = tip_label | default: '请我喝杯咖啡'
+-%}
+{%- if tip_href != blank -%}
+  <aside class="tf-cart-tip" data-geo="cart-tip-note" role="note">
+    <p class="tf-cart-tip__body">
+      本店演示结账仅作商品挑选与流程说明；若您认可开源 SEO/GEO 模板，可通过赞助页支持作者（非商品支付）。
+    </p>
+    <p class="tf-cart-tip__actions">
+      <a class="tf-cart-tip__link" href="{{ tip_href | escape }}" rel="noopener">
+        ☕ {{ tip_text | escape }}
+      </a>
+    </p>
+  </aside>
+{%- else -%}
+  <aside class="tf-cart-tip tf-cart-tip--muted" data-geo="cart-tip-note" role="note">
+    <p class="tf-cart-tip__body">
+      结账为店铺正式订单流程。若主题配置了赞助页 URL（<code>tip_page_url</code>），此处会显示「请我喝杯咖啡」入口。
+    </p>
+  </aside>
+{%- endif -%}

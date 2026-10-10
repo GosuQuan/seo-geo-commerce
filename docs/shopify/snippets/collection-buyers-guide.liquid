@@ -1,0 +1,11 @@
+{% comment %}
+  Collection buyers-guide / answer-first for category pages.
+  Metafield: collection.metafields.seo.buyers_guide (multi-line text)
+  Usage: {% render 'collection-buyers-guide', collection: collection %}
+{% endcomment %}
+{%- assign guide = collection.metafields.seo.buyers_guide.value -%}
+{%- if guide != blank -%}
+  <div class="tf-answer-first tf-answer-first--collection" data-geo="collection-guide">
+    <p class="tf-answer-first__text">{{ guide | escape | newline_to_br }}</p>
+  </div>
+{%- endif -%}

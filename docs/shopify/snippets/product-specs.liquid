@@ -1,0 +1,36 @@
+{% comment %}
+  Specs table — same values should feed JSON-LD additionalProperty when enabled.
+  Option A (default): namespace metafields.specs.* as single-line text keys.
+  Option B: pass spec_rows as a list of { label, value } from a metaobject list.
+  Usage:
+    {% render 'product-specs', product: product %}
+    {% render 'product-specs', product: product, spec_rows: product.metafields.custom.spec_rows.value %}
+{% endcomment %}
+{%- if spec_rows != blank -%}
+  <table class="tf-specs">
+    <caption class="tf-specs__caption">规格参数</caption>
+    <tbody>
+      {%- for row in spec_rows -%}
+        <tr>
+          <th scope="row">{{ row.label | default: row.name | escape }}</th>
+          <td>{{ row.value | escape }}</td>
+        </tr>
+      {%- endfor -%}
+    </tbody>
+  </table>
+{%- elsif product.metafields.specs != blank -%}
+  <table class="tf-specs">
+    <caption class="tf-specs__caption">规格参数</caption>
+    <tbody>
+      {%- for spec in product.metafields.specs -%}
+        {%- assign spec_val = product.metafields.specs[spec].value -%}
+        {%- if spec_val != blank -%}
+          <tr>
+            <th scope="row">{{ spec | replace: '_', ' ' | escape }}</th>
+            <td>{{ spec_val | escape }}</td>
+          </tr>
+        {%- endif -%}
+      {%- endfor -%}
+    </tbody>
+  </table>
+{%- endif -%}

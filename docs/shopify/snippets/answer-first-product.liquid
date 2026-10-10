@@ -1,0 +1,17 @@
+{% comment %}
+  TrailForge / seo-geo-commerce — Answer-first block for product pages.
+  Metafield: product.metafields.seo.answer_first (multi-line text)
+  Fallback: stripped product.description truncated to 220 chars.
+  Usage: {% render 'answer-first-product', product: product %}
+{% endcomment %}
+{%- liquid
+  assign af = product.metafields.seo.answer_first.value
+  if af == blank
+    assign af = product.description | strip_html | truncate: 220
+  endif
+-%}
+{%- if af != blank -%}
+  <div class="tf-answer-first" data-geo="answer-first">
+    <p class="tf-answer-first__text">{{ af | escape | newline_to_br }}</p>
+  </div>
+{%- endif -%}
