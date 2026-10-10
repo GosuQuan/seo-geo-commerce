@@ -1,10 +1,11 @@
 import Link from "next/link";
 import { siteConfig } from "@/config/site";
 import { categories } from "@/data/categories";
+import { CartButton } from "@/components/cart/CartButton";
 
 export function Header() {
   return (
-    <header className="border-b border-stone-200 bg-white/90 backdrop-blur sticky top-0 z-40">
+    <header className="sticky top-0 z-40 border-b border-stone-200 bg-white/90 backdrop-blur">
       <div className="mx-auto flex max-w-6xl items-center justify-between gap-4 px-4 py-3">
         <Link href="/" className="flex items-center gap-2 font-semibold text-stone-900">
           <span className="inline-flex h-8 w-8 items-center justify-center rounded-lg bg-emerald-700 text-sm text-white">
@@ -50,6 +51,7 @@ export function Header() {
           >
             打赏
           </Link>
+          <CartButton />
         </nav>
       </div>
     </header>

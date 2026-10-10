@@ -14,7 +14,15 @@ export const metadata = buildMetadata({
   path: "/tip",
 });
 
-export default function TipPage() {
+type Props = {
+  searchParams?: Promise<Record<string, string | string[] | undefined>>;
+};
+
+export default async function TipPage({ searchParams }: Props) {
+  const sp = (await searchParams) ?? {};
+  const demo = sp.demo === "1" || sp.from === "checkout";
+  const total = typeof sp.total === "string" ? sp.total : undefined;
+  const name = typeof sp.name === "string" ? sp.name : undefined;
   const mailto = `mailto:${siteConfig.email}?subject=${encodeURIComponent("TrailForge 打赏 / 合作咨询")}`;
 
   return (
@@ -26,6 +34,28 @@ export default function TipPage() {
         ])}
       />
       <Breadcrumbs items={[{ name: "首页", href: "/" }, { name: "打赏支持" }]} />
+
+      {demo ? (
+        <div className="rounded-2xl border border-amber-200 bg-gradient-to-r from-amber-50 to-orange-50 p-5 text-sm text-amber-950 shadow-sm">
+          <p className="font-bold text-amber-900">☕ 演示支付完成页</p>
+          <p className="mt-2 leading-relaxed">
+            这是电商 Demo 的「支付」环节：不会真实扣商品款或发货
+            {total ? `（刚才模拟订单合计 ¥${total}` : ""}
+            {name ? `，备注：${name}` : ""}
+            {total || name ? "）。" : "。"}
+            若演示对你有帮助，欢迎用下方收款码请作者喝杯咖啡。
+          </p>
+          <p className="mt-2">
+            <Link href="/products" className="font-medium text-emerald-800 underline">
+              继续逛商品
+            </Link>
+            {" · "}
+            <Link href="/cart" className="font-medium text-emerald-800 underline">
+              返回购物车
+            </Link>
+          </p>
+        </div>
+      ) : null}
 
       <header className="overflow-hidden rounded-3xl bg-gradient-to-br from-amber-500 via-rose-500 to-fuchsia-600 p-8 text-white shadow-xl">
         <p className="text-sm font-semibold uppercase tracking-[0.2em] text-white/80">Sponsor</p>
@@ -42,11 +72,7 @@ export default function TipPage() {
         <p className="text-sm leading-relaxed text-stone-600">
           使用支付宝或微信扫描下方收款码即可完成打赏。
           <strong className="font-semibold text-stone-800"> 扫码支付的款项将直接付给作者本人</strong>
-          （非平台中间账户）。若图片仍是占位图，请作者把真实收款码 PNG 放到{" "}
-          <code className="rounded bg-stone-100 px-1.5 py-0.5 font-mono text-xs">
-            public/images/donate/
-          </code>
-          。
+          （非平台中间账户）。
         </p>
         <div className="grid gap-6 sm:grid-cols-2">
           <figure className="rounded-2xl border border-blue-100 bg-gradient-to-b from-blue-50 to-white p-5 text-center shadow-sm">
@@ -54,7 +80,7 @@ export default function TipPage() {
             <div className="relative mx-auto aspect-[480/560] w-full max-w-[280px] overflow-hidden rounded-xl bg-white shadow-inner">
               <Image
                 src={siteConfig.donate.alipayImage}
-                alt="支付宝收款码（打赏作者）"
+                alt="支付宝收款码"
                 fill
                 className="object-contain p-2"
                 sizes="280px"
@@ -68,7 +94,7 @@ export default function TipPage() {
             <div className="relative mx-auto aspect-[480/560] w-full max-w-[280px] overflow-hidden rounded-xl bg-white shadow-inner">
               <Image
                 src={siteConfig.donate.wechatImage}
-                alt="微信收款码（打赏作者）"
+                alt="微信收款码"
                 fill
                 className="object-contain p-2"
                 sizes="280px"

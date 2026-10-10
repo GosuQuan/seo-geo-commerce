@@ -13,6 +13,7 @@ import { FaqList } from "@/components/FaqList";
 import { ProductCard } from "@/components/ProductCard";
 import { JsonLd } from "@/components/JsonLd";
 import { SeoBridgeCallout } from "@/components/SeoBridgeCallout";
+import { AddToCartButton } from "@/components/cart/AddToCartButton";
 import { buildMetadata } from "@/lib/seo/metadata";
 import {
   breadcrumbJsonLd,
@@ -90,6 +91,20 @@ export default async function ProductPage({ params }: Props) {
               {product.availability === "InStock" ? "现货" : product.availability} · ★{" "}
               {product.aggregateRating.ratingValue}（{product.aggregateRating.reviewCount} 评价）
             </p>
+          </div>
+          <div className="flex flex-wrap gap-3">
+            <AddToCartButton
+              slug={product.slug}
+              name={product.name}
+              price={product.price}
+              image={product.image}
+            />
+            <Link
+              href="/checkout"
+              className="rounded-full border border-emerald-700 px-5 py-2.5 text-sm font-semibold text-emerald-800 hover:bg-emerald-50"
+            >
+              模拟结账
+            </Link>
           </div>
           <p className="text-sm text-stone-600">
             机器可读事实：{" "}

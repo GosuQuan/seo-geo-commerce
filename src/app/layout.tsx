@@ -2,6 +2,9 @@ import type { Metadata } from "next";
 import "./globals.css";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
+import { TipFab } from "@/components/TipFab";
+import { CartProvider } from "@/components/cart/CartProvider";
+import { CartDrawer } from "@/components/cart/CartDrawer";
 import { JsonLd } from "@/components/JsonLd";
 import { siteConfig } from "@/config/site";
 import { organizationJsonLd, websiteJsonLd } from "@/lib/seo/jsonld";
@@ -21,10 +24,14 @@ export default function RootLayout({
   return (
     <html lang={siteConfig.locale}>
       <body className="min-h-screen antialiased">
-        <JsonLd data={[organizationJsonLd(), websiteJsonLd()]} />
-        <Header />
-        <main className="mx-auto min-h-[70vh] max-w-6xl px-4 py-8">{children}</main>
-        <Footer />
+        <CartProvider>
+          <JsonLd data={[organizationJsonLd(), websiteJsonLd()]} />
+          <Header />
+          <main className="mx-auto min-h-[70vh] max-w-6xl px-4 py-8">{children}</main>
+          <Footer />
+          <TipFab />
+          <CartDrawer />
+        </CartProvider>
       </body>
     </html>
   );

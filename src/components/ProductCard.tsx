@@ -1,5 +1,6 @@
 import Link from "next/link";
 import type { Product } from "@/data/schema";
+import { AddToCartButton } from "@/components/cart/AddToCartButton";
 
 export function ProductCard({ product }: { product: Product }) {
   return (
@@ -22,13 +23,26 @@ export function ProductCard({ product }: { product: Product }) {
           </Link>
         </h3>
         <p className="line-clamp-2 flex-1 text-sm text-stone-600">{product.answerFirst}</p>
-        <div className="mt-2 flex items-center justify-between">
-          <p className="text-lg font-semibold text-emerald-800">
-            ¥{product.price}
-          </p>
+        <div className="mt-2 flex items-center justify-between gap-2">
+          <p className="text-lg font-semibold text-emerald-800">¥{product.price}</p>
           <p className="text-xs text-stone-500">
             ★ {product.aggregateRating.ratingValue}（{product.aggregateRating.reviewCount}）
           </p>
+        </div>
+        <div className="mt-1 flex items-center justify-between gap-2">
+          <Link
+            href={`/products/${product.slug}`}
+            className="text-xs font-medium text-stone-600 hover:text-emerald-800"
+          >
+            查看详情
+          </Link>
+          <AddToCartButton
+            slug={product.slug}
+            name={product.name}
+            price={product.price}
+            image={product.image}
+            compact
+          />
         </div>
       </div>
     </article>
