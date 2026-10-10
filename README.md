@@ -97,7 +97,7 @@ docker compose up --build        # 近生产一键起
 
 ### 店面路由
 
-- `/` 首页（企业级动效：滚动进度条 · 数字递增 · Hero 视差 · 分区 blur 入场 · 商品卡 3D tilt · 特性 Marquee；`useReducedMotion` 全覆盖） · `/products` · `/products/[slug]` PDP（含 Shopify 映射彩条）
+- `/` 首页（企业级动效：滚动进度条 · 数字递增 · Hero 视差 · **懒加载 R3F Hero** · 分区 blur 入场 · 商品卡 3D tilt · 特性 Marquee；`useReducedMotion` 全覆盖） · `/products` · `/products/[slug]` PDP（含 Shopify 映射彩条）
 - `/categories/[slug]` 分类买家指南
 - `/guides/*` 含 **Shopify SEO/GEO 实践**、新手装备、防水等级
 - `/audit` 清单打分
@@ -132,16 +132,17 @@ docker compose up --build        # 近生产一键起
 | Section reveal | `whileInView` + blur/fade（`once`） |
 | Product tilt | 轻微透视跟随指针 |
 | Feature marquee | Hero 下标签带，悬停暂停 |
+| Hero R3F (lazy) | 右侧 3D 鞋盒/粒子场景：`LazyHomeHero3D` → `next/dynamic(..., { ssr: false })`，不阻塞其它页 SSR |
 
-`prefers-reduced-motion` 时关闭视差/递增动画/跑马灯，文案始终在 DOM 中可见（不永久 `opacity: 0`）。
+`prefers-reduced-motion` 时关闭视差/递增动画/跑马灯，Hero 3D 退化为静态渐变块；文案始终在 DOM 中可见（不永久 `opacity: 0`）。
 
-更重的库演示仍在 [`/effects`](./docs/blog/animation-libs.md) **按路由懒加载**。
+更重的库演示仍在 [`/effects`](./docs/blog/animation-libs.md) **按路由懒加载**。首页 Hero 的 Three/R3F 同样是 **客户端懒加载**，不会打进其它路由的首包。
 
 ---
 
 ## ✨ 动效实验室
 
-可商用开源动效 **全量进 Demo**，但 **按路由懒加载**——商店首页不会背负 Three.js。
+可商用开源动效 **全量进 Demo**，但 **按路由懒加载**；首页 Hero 仅客户端懒加载一小块 R3F，完整 Three 演示仍在 `/effects/r3f`。
 
 | 路由 | 库 | 许可 |
 |------|----|------|

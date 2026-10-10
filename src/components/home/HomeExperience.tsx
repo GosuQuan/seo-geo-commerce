@@ -14,6 +14,7 @@ import { ScrollProgress } from "./ScrollProgress";
 import { CountUpStat } from "./CountUpStat";
 import { FeatureMarquee } from "./FeatureMarquee";
 import { TiltCard } from "./TiltCard";
+import { LazyHomeHero3D } from "./LazyHomeHero3D";
 
 type Props = {
   featured: Product[];
@@ -115,66 +116,87 @@ export function HomeExperience({
           transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
         />
 
-        <motion.div style={{ y: headlineY, opacity: headlineOpacity }}>
-          <motion.p
-            className="relative text-sm font-medium text-emerald-200"
-            initial={reduce ? false : { opacity: 0, y: 12 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.1, duration: 0.5 }}
-          >
-            SEO + GEO Reference Storefront
-          </motion.p>
-          <motion.h1
-            className="relative mt-2 max-w-3xl text-3xl font-bold tracking-tight md:text-4xl"
-            initial={reduce ? false : { opacity: 0, y: 18 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.18, duration: 0.55, ease }}
-          >
-            可上线的户外电商 Demo：让搜索引擎与 AI 引擎都能正确引用你的商品事实
-          </motion.h1>
-          <motion.p
-            className="relative mt-4 max-w-2xl text-base leading-relaxed text-emerald-50/90"
-            initial={reduce ? false : { opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.28, duration: 0.55, ease }}
-          >
-            这不是又一个 GEO 内容 CMS。峰途 TrailForge 演示如何用 SSR 商品页、一致的
-            JSON-LD、 Answer-first 文案、FAQ、机器可读 Facts API 与可配置 AI
-            爬虫策略，把电商目录做成可被引用的事实源。
-          </motion.p>
-        </motion.div>
+        <div className="relative grid items-center gap-8 md:grid-cols-2 md:gap-10">
+          <div>
+            <motion.div style={{ y: headlineY, opacity: headlineOpacity }}>
+              <motion.p
+                className="relative text-sm font-medium text-emerald-200"
+                initial={reduce ? false : { opacity: 0, y: 12 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.1, duration: 0.5 }}
+              >
+                SEO + GEO Reference Storefront
+              </motion.p>
+              <motion.h1
+                className="relative mt-2 max-w-3xl text-3xl font-bold tracking-tight md:text-4xl"
+                initial={reduce ? false : { opacity: 0, y: 18 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.18, duration: 0.55, ease }}
+              >
+                可上线的户外电商 Demo：让搜索引擎与 AI 引擎都能正确引用你的商品事实
+              </motion.h1>
+              <motion.p
+                className="relative mt-4 max-w-2xl text-base leading-relaxed text-emerald-50/90"
+                initial={reduce ? false : { opacity: 0, y: 16 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.28, duration: 0.55, ease }}
+              >
+                这不是又一个 GEO 内容 CMS。峰途 TrailForge 演示如何用 SSR 商品页、一致的
+                JSON-LD、 Answer-first 文案、FAQ、机器可读 Facts API 与可配置 AI
+                爬虫策略，把电商目录做成可被引用的事实源。
+              </motion.p>
+            </motion.div>
 
-        <motion.div
-          className="relative mt-6 flex flex-wrap gap-3"
-          initial={reduce ? false : { opacity: 0, y: 14 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.38, duration: 0.5, ease }}
-        >
-          <Link
-            href="/products"
-            className="rounded-full bg-white px-5 py-2.5 text-sm font-semibold text-emerald-900 transition hover:scale-[1.03] hover:shadow-lg"
+            <motion.div
+              className="relative mt-6 flex flex-wrap gap-3"
+              initial={reduce ? false : { opacity: 0, y: 14 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.38, duration: 0.5, ease }}
+            >
+              <Link
+                href="/products"
+                className="rounded-full bg-white px-5 py-2.5 text-sm font-semibold text-emerald-900 transition hover:scale-[1.03] hover:shadow-lg"
+              >
+                浏览商品
+              </Link>
+              <Link
+                href="/audit"
+                className="rounded-full border border-white/40 px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-white/10"
+              >
+                打开 GEO 审计
+              </Link>
+              <Link
+                href="/effects"
+                className="rounded-full border border-cyan-300/50 bg-cyan-400/20 px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-cyan-400/30"
+              >
+                动效实验室
+              </Link>
+              <Link
+                href="/guides/shopify-seo-geo"
+                className="rounded-full bg-violet-500/90 px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-violet-400"
+              >
+                Shopify SEO/GEO
+              </Link>
+            </motion.div>
+          </div>
+
+          <motion.div
+            className="relative flex flex-col gap-2"
+            initial={reduce ? false : { opacity: 0, scale: 0.96 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ delay: 0.32, duration: 0.6, ease }}
           >
-            浏览商品
-          </Link>
-          <Link
-            href="/audit"
-            className="rounded-full border border-white/40 px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-white/10"
-          >
-            打开 GEO 审计
-          </Link>
-          <Link
-            href="/effects"
-            className="rounded-full border border-cyan-300/50 bg-cyan-400/20 px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-cyan-400/30"
-          >
-            动效实验室
-          </Link>
-          <Link
-            href="/guides/shopify-seo-geo"
-            className="rounded-full bg-violet-500/90 px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-violet-400"
-          >
-            Shopify SEO/GEO
-          </Link>
-        </motion.div>
+            <div className="h-52 w-full sm:h-60 md:h-64 lg:h-72">
+              <LazyHomeHero3D />
+            </div>
+            <Link
+              href="/effects/r3f"
+              className="self-end text-xs font-medium text-emerald-200/90 underline-offset-2 hover:text-white hover:underline"
+            >
+              完整 R3F 演示 →
+            </Link>
+          </motion.div>
+        </div>
       </motion.section>
 
       <FeatureMarquee />
