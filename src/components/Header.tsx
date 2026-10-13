@@ -10,6 +10,7 @@ const primaryLinks = [
   { href: "/products", label: "全部商品" },
   { href: "/guides/first-hike-gear", label: "选购指南" },
   { href: "/guides/shopify-seo-geo", label: "Shopify 实践" },
+  { href: "/portfolio", label: "作品集", highlight: "portfolio" as const },
   { href: "/effects", label: "动效实验室", highlight: "effects" as const },
   { href: "/audit", label: "GEO 审计" },
   { href: "/about", label: "关于" },
@@ -24,16 +25,18 @@ function NavLink({
 }: {
   href: string;
   label: string;
-  highlight?: "effects" | "tip";
+  highlight?: "effects" | "tip" | "portfolio";
   onNavigate?: () => void;
   className?: string;
 }) {
   const base =
     highlight === "effects"
       ? "rounded-full bg-gradient-to-r from-fuchsia-500 to-cyan-500 px-2.5 py-0.5 font-medium text-white shadow-sm hover:opacity-90"
-      : highlight === "tip"
-        ? "rounded-full bg-gradient-to-r from-amber-500 to-rose-500 px-2.5 py-0.5 text-xs font-bold text-white shadow-sm hover:opacity-90"
-        : "hover:text-emerald-800";
+      : highlight === "portfolio"
+        ? "rounded-full bg-gradient-to-r from-emerald-500 to-sky-500 px-2.5 py-0.5 font-medium text-white shadow-sm hover:opacity-90"
+        : highlight === "tip"
+          ? "rounded-full bg-gradient-to-r from-amber-500 to-rose-500 px-2.5 py-0.5 text-xs font-bold text-white shadow-sm hover:opacity-90"
+          : "hover:text-emerald-800";
 
   return (
     <Link href={href} onClick={onNavigate} className={`${base} ${className}`.trim()}>

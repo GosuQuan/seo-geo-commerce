@@ -1,5 +1,9 @@
 @import "tailwindcss";
 
+/* Rank lottie-react defaults below Tailwind utilities (lottie-react v3 + TW4). */
+@layer lottie-react;
+
+
 :root {
   --background: #fafaf9;
   --foreground: #1c1917;

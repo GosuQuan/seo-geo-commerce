@@ -49,6 +49,11 @@ export function Footer() {
               </Link>
             </li>
             <li>
+              <Link className="hover:text-emerald-800" href="/portfolio">
+                /portfolio 作品集
+              </Link>
+            </li>
+            <li>
               <Link className="hover:text-fuchsia-800" href="/effects">
                 /effects 动效实验室
               </Link>
